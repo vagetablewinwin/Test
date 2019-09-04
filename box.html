@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Box</title>
+</head>
+<style>
+    .box{
+        width:200px;height: 200px;background-color: red;
+        position: absolute;left: 200px;top: 200px;
+    }
+</style>
+<body>
+    <div id="box" class="box">Box</div>
+
+    <script>
+        let box=document.getElementById("box");
+        let pickup=function(){
+            document.addEventListener("mousemove",move);
+            box.removeEventListener("mousedown",pickup);
+            box.addEventListener("mouseup",putdown);
+        };
+        let move=function(e){
+            box.style.left=(e.clientX-20)+"px";
+            box.style.top=(e.clientY-20)+"px";
+        };
+        let putdown=function(){
+            document.removeEventListener("mousemove",move);
+            box.removeEventListener("mouseup",putdown);
+            box.addEventListener("mousedown",pickup);
+            
+        };
+        box.addEventListener("mousedown",pickup);
+    
+    </script>
+</body>
+</html>
