@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animation</title>
+    <style>
+        .box{
+            background-color: red;
+            height: 20px;
+            width: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">Box</div>    
+
+    <script>
+        let box=document.getElementById("box");
+        let size=20;
+        box.style.width=size+"px";
+        
+        let change=function(){
+            size++;
+            box.style.width=size+"px";
+            box.style.height=size+"px";
+            if(size>=300){
+                window.clearInterval(effectId);
+            }
+        };
+        let effectId=window.setInterval(change,10);
+    </script>
+</body>
+</html>
